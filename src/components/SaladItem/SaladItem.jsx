@@ -44,9 +44,12 @@ export default function SaladItem({ image, name }) {
     setSalad({
       name,
       id: `${name}-${id}`,
-    });
+      status:1
+    },);
     updateId();
   }
+
+
   return (
     <div className={classes.wrapper}>
       <h3>{name}</h3>

@@ -8,6 +8,7 @@ const useStyles = createUseStyles({
     flexDirection: "column",
     flexWrap: "wrap",
     maxHeight: 150,
+    listStyleType:"none",
     "& li": {
       width: 200,
     },
@@ -20,23 +21,20 @@ const useStyles = createUseStyles({
 });
 export default function SaladSummary() {
   const classes = useStyles();
-  const { salad } = useContext(SaladContext);
+  const { salad ,setSalad} = useContext(SaladContext);
 
   const removeItem = (e, item) => {
-    let updatedOrder = order.filter((element) => {
-      return element !== item;
-    });
-    setOrder(updatedOrder);
+    console.log("item",item)
+    setSalad({name:item.name,id:item.id,status:0});
   };
 
 
-
-  return (
+   return (
     <div className={classes.wrapper}>
       <h2>Your Salad</h2>
       <ul className={classes.list}>
-        {salad.map(({ name, id }) => (
-          <li key={id}>{name}</li>
+        {salad.map(( item ) => (
+          <li key={item.id} onClick={(e) => removeItem(e, item)}>{item.name}</li>
         ))}
       </ul>
     </div>
