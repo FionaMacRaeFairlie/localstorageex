@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -42,9 +45,112 @@
 }
 
 .nav-item {
-  display:inline-flexbox;
+  display: inline-flexbox;
   text-emphasis: none;
- color: black;
- width: 200px;
- margin-left: 10px;
+  color: black;
+  width: 200px;
+  margin-left: 10px;
+}
+
+/* Page container */
+.form-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Individual form/card */
+.form-card {
+  width: 95%;
+  min-width: 600px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: inline-block;
+  font-weight: 300;
+  margin-right: 4px;
+  padding: 1%;
+  margin-bottom: 0.4rem;
+  color: #595d60;
+}
+
+.form-control {
+  width: 60%;
+  padding: 0.5rem 0.75rem;
+  margin: 2px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Input and button on same line */
+.input-action-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.input-action-row .form-control {
+  flex: 1;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.left-align {
+  text-align: left;
+}
+
+/* Checkbox groups */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 150px;
+}
+
+/* Individual checkbox row */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Prevent huge default sizing differences */
+.checkbox-item input[type="checkbox"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-item label {
+  margin: 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }

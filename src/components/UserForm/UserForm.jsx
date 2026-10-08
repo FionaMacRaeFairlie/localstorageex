@@ -1,96 +1,88 @@
 import { useLocalStorage } from "../useLocalStorage";
 
-
 const Form = () => {
   const [name, setName] = useLocalStorage("name", "");
-  const [apple, setApple] = useLocalStorage("apple", false);
-  const [sweetcorn, setSweetcorn] = useLocalStorage("sweetcorn", false);
-  const [mushroom, setMushroom] = useLocalStorage("mushroom", false);
-  const [tomato, setTomato] = useLocalStorage("tomato", false);
-  const [dressing, setDressing] = useLocalStorage("dressing", false);
-  const [rice, setRice] = useLocalStorage("rice", false);
-  const [aubergine, setAubergine] = useLocalStorage("aubergine", false);
-  const [watermelon, setWatermelon] = useLocalStorage("watermelon", false);
 
+  const [ingredients, setIngredients] = useLocalStorage("ingredients", {
+    apple: false,
+    sweetcorn: false,
+    mushroom: false,
+    tomato: false,
+    dressing: false,
+    rice: false,
+    aubergine: false,
+    watermelon: false,
+  });
+
+  const ingredientOptions = [
+    { key: "apple", label: "Apple" },
+    { key: "sweetcorn", label: "Sweetcorn" },
+    { key: "mushroom", label: "Mushroom" },
+    { key: "tomato", label: "Tomato" },
+    { key: "dressing", label: "Red Wine Dressing" },
+    { key: "rice", label: "Seasoned Rice" },
+    { key: "aubergine", label: "Aubergine" },
+    { key: "watermelon", label: "Watermelon" },
+  ];
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+
+    setIngredients({
+      ...ingredients,
+      [name]: checked,
+    });
+  };
 
   return (
-    <>
-      <form>
+    <form className="form-card">
+      <div className="form-group">
+        <label className="form-label" htmlFor="fullname">
+          Full Name
+        </label>
+
         <input
+          id="fullname"
           type="text"
+          className="form-control"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Full name"
-          aria-label="fullname"
         />
-        <p> Select your fovourite items here</p>
+      </div>
 
-        <label>
-          Apple
-          <input
-            type="checkbox"
-            checked={apple}
-            onChange={(e) => setApple(e.target.checked)}
-          />
-        </label>
-        <label>
-          Sweetcorn
-          <input
-            type="checkbox"
-            checked={sweetcorn}
-            onChange={(e) => setSweetcorn(e.target.checked)}
-          />
-        </label>
-        <label>
-          Mushroom
-          <input
-            type="checkbox"
-            checked={mushroom}
-            onChange={(e) => setMushroom(e.target.checked)}
-          />
-        </label>
-        <label>
-          Tomato
-          <input
-            type="checkbox"
-            checked={tomato}
-            onChange={(e) => setTomato(e.target.checked)}
-          />
-        </label>
-        <label>
-          Red Wine Dressing
-          <input
-            type="checkbox"
-            checked={dressing}
-            onChange={(e) => setDressing(e.target.checked)}
-          />
-        </label>
-        <label>
-          Seasoned rice
-          <input
-            type="checkbox"
-            checked={rice}
-            onChange={(e) => setRice(e.target.checked)}
-          />
-        </label>
-        <label>
-          Aubergine
-          <input
-            type="checkbox"
-            checked={aubergine}
-            onChange={(e) => setAubergine(e.target.checked)}
-          />
-        </label>
-        <label>
-          Watermelon
-          <input
-            type="checkbox"
-            checked={watermelon}
-            onChange={(e) => setWatermelon(e.target.checked)}
-          />
-        </label>
-      </form>
-    </>
+      <div className="form-group">
+        <p>Select your favourite items here</p>
+
+        <div className="checkbox-group">
+          {ingredientOptions.map((ingredient) => (
+            <div key={ingredient.key} className="checkbox-item">
+              <input
+                id={ingredient.key}
+                type="checkbox"
+                name={ingredient.key}
+                checked={ingredients[ingredient.key]}
+                onChange={handleCheckboxChange}
+              />
+
+              <label htmlFor={ingredient.key}>{ingredient.label}</label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* <div className="form-group">
+        <h3>Current Selection</h3>
+
+        <ul>
+          {Object.keys(ingredients)
+            .filter((ingredient) => ingredients[ingredient])
+            .map((ingredient) => (
+              <li key={ingredient}>{ingredient}</li>
+            ))}
+        </ul>
+      </div> */}
+    </form>
   );
 };
 

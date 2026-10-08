@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <nav>
-      <div style={{float:"left"}}>
+      <div className="nav-wrapper">
         <span>
           <a href="/" className="nav-item ">
             Home
